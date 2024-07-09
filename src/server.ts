@@ -1,7 +1,13 @@
 import fastify from "fastify";
 import { movies, streamers } from "./data/data";
+import cors from "@fastify/cors"
 
 const app = fastify()
+
+// definindo o CORS da app
+ app.register(cors, {
+  origin: "*"
+})
 
 app.get('/movies', (request, reply) => {
   reply.type('application/json').code(200)
